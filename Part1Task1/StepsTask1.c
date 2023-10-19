@@ -44,9 +44,26 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
 
-    FITNESS_DATA dataFile;
-    dataFile = fopen("../FitnessData_2023.csv","r");
-    printf("%s", dataFile);
+    int count;
+    count = 0;
+    char strFile[32];
+    FILE *dataFile = fopen("FitnessData_2023.csv","r");
+    /*Count variable will be used later when finding the number of lines in a text file,
+    create a string to display the data in the .csv file,
+    and create a pointer to the file using the variable dataFile*/
+
+    while (fgets(strFile, 32, dataFile)){
+        count ++;
+        /*Reads the data file and increments count every time a new line is detected,
+         if a line is empty, the while loop breaks and count is the number of lines in the .csv file*/
+    }
+
+    printf("Number of records in file: %d\n", count);
+
+    for (int i = 0; i <= 2; i++){
+        fgets(strFile, 32, dataFile);
+        printf("%s", strFile);
+    }
 
     return 0;
 
