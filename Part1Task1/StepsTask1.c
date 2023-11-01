@@ -12,7 +12,7 @@ typedef struct {
 // Define any additional variables here
 
 int count = 0;
-char* dataRows[3];
+char* dataRows[3][3];
 char strFile[32];
 
 // This is your helper function. Do not change it in any way.
@@ -63,7 +63,10 @@ int main() {
     for (int i = 0; i <= 2; i++){
         fgets(strFile, 32, dataFile);
         //printf("%s", strFile);
-        tokeniseRecord(strFile, ",", array[i][10], array[i][10], array[i][10]);
+        printf("%p\n", &dataRows[0][0]);
+        printf("%p\n", &dataRows[0][1]);
+        printf("%p\n", &dataRows[1][0]);
+        //tokeniseRecord(strFile, ",", dataRows[i][0], dataRows[i][1], dataRows[i][2]);
     }
 
     return 0;
