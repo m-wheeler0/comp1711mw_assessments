@@ -11,7 +11,9 @@ typedef struct {
 
 // Define any additional variables here
 
-
+int count = 0;
+char* dataRows[3];
+char strFile[32];
 
 // This is your helper function. Do not change it in any way.
 // Inputs: character array representing a row; the delimiter character
@@ -23,7 +25,8 @@ void tokeniseRecord(const char *input, const char *delimiter,
     
     // Tokenize the copied string
     char *token = strtok(inputCopy, delimiter);
-    if (token != NULL) {        strcpy(date, token);
+    if (token != NULL) {        
+        strcpy(date, token);
     }
     
     token = strtok(NULL, delimiter);
@@ -44,9 +47,6 @@ void tokeniseRecord(const char *input, const char *delimiter,
 // Complete the main function
 int main() {
 
-    int count;
-    count = 0;
-    char strFile[32];
     FILE *dataFile = fopen("FitnessData_2023.csv","r");
     /*Count variable will be used later when finding the number of lines in a text file,
     create a string to display the data in the .csv file,
@@ -62,7 +62,8 @@ int main() {
 
     for (int i = 0; i <= 2; i++){
         fgets(strFile, 32, dataFile);
-        printf("%s", strFile);
+        //printf("%s", strFile);
+        tokeniseRecord(strFile, ",", array[i][10], array[i][10], array[i][10]);
     }
 
     return 0;
