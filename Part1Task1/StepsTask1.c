@@ -6,13 +6,12 @@
 typedef struct {
 	char date[11];
 	char time[6];
-	int steps;
+	char steps[10];
 } FITNESS_DATA;
 
 // Define any additional variables here
 
 int count = 0;
-char* dataRows[3][3];
 char strFile[32];
 
 // This is your helper function. Do not change it in any way.
@@ -52,6 +51,8 @@ int main() {
     create a string to display the data in the .csv file,
     and create a pointer to the file using the variable dataFile*/
 
+    FITNESS_DATA fitnessData;
+
     while (fgets(strFile, 32, dataFile)){
         count ++;
         /*Reads the data file and increments count every time a new line is detected,
@@ -63,10 +64,8 @@ int main() {
     for (int i = 0; i <= 2; i++){
         fgets(strFile, 32, dataFile);
         //printf("%s", strFile);
-        printf("%p\n", &dataRows[0][0]);
-        printf("%p\n", &dataRows[0][1]);
-        printf("%p\n", &dataRows[1][0]);
-        //tokeniseRecord(strFile, ",", dataRows[i][0], dataRows[i][1], dataRows[i][2]);
+        tokeniseRecord(strFile, ",", fitnessData.date, fitnessData.time, fitnessData.steps);
+        printf("%s/%s/%s", fitnessData.date, fitnessData.time, fitnessData.steps);
     }
 
     return 0;
