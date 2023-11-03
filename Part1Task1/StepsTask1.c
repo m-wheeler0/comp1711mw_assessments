@@ -65,7 +65,8 @@ int main() {
     for (int i = 0; i <= 2; i++){
         fgets(strFile, 32, dataFile2);
         tokeniseRecord(strFile, ",", fitnessData.date, fitnessData.time, fitnessData.steps);
-        printf("%s/%s/%s", fitnessData.date, fitnessData.time, fitnessData.steps);
+        int stepCount = atoi(fitnessData.steps);
+        printf("%s/%s/%d\n", fitnessData.date, fitnessData.time, stepCount);
     }
 
     return 0;
