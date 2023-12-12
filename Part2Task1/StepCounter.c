@@ -2,6 +2,7 @@
 
 int count = 0;
 char strFile[32];
+char fileName[];
 
 int main() {
     printf("What option would you like to choose?\n"
@@ -16,26 +17,28 @@ int main() {
     char selection;
     scanf("%c", &selection);
 
-    if (selection == 'A'){
-        printf("Enter the filename: ");
-        scanf();
-    }
-    else if (selection == 'B'){
-        printf("B\n");
-    }
-    else if (selection == 'C'){
-        printf("C\n");
-    }
-    else if (selection == 'D'){
-        printf("D\n");
-    }
-    else if (selection == 'E'){
-        printf("E\n");
-    }
-    else if (selection == 'F'){
-        printf("F\n");
-    }
-    else if (selection == 'Q'){
+    while (selection != 'Q'){
+        if (selection == 'A'){
+            printf("Enter the filename: ");
+            scanf("%s", &fileName);
+        }
+        else if (selection == 'B'){
+            printf("B\n");
+        }
+        else if (selection == 'C'){
+            printf("C\n");
+        }
+        else if (selection == 'D'){
+            printf("D\n");
+        }
+        else if (selection == 'E'){
+            printf("E\n");
+        }
+        else if (selection == 'F'){
+            printf("F\n");
+        }
+        }
+    if (selection == 'Q'){
         exit(0);
     }
     else{
