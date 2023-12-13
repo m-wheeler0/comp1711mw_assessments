@@ -1,8 +1,7 @@
 #include "FitnessDataStruct.h"
 
-char strFile[32];
-char fileName[32];
-char selection;
+char selection, fileName[32], strFile[32];
+int recordCount;
 FILE *dataFile;
 FITNESS_DATA fitnessData;
 
@@ -22,19 +21,20 @@ int main() {
         if (selection == 'A'){
             printf("Enter the filename: ");
             scanf("%s", fileName);
-            fopen(fileName, "r");
+            dataFile = fopen(fileName, "r");
             perror("");
-            printf("\n");
+            tokeniseRecord(strFile, ",", fitnessData.date, fitnessData.time, fitnessData.steps);
+            printf("\n\n");
             
         }
         else if (selection == 'B'){
-            int recordCount;
             while (fgets(strFile, 32, dataFile)){
                 recordCount++;
             }
-            printf("%d", recordCount);
+            printf("The number of records in this data file is: %d\n\n", recordCount);
         }
         else if (selection == 'C'){
+            printf("Fewest steps: \n\n")
             perror("");
         }
         else if (selection == 'D'){
@@ -47,6 +47,7 @@ int main() {
             perror("");
         }
         else if (selection == 'Q'){
+            fclose(dataFile);
             exit(0);
         }
         else{
