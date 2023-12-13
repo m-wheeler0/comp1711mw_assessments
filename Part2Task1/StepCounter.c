@@ -17,13 +17,13 @@ int main() {
         "E. Find the mean step count of all recorded data in the file\n"
         "F. Find the longest continuous streak of having over 500 steps per record\n"
         "Q. Quit\n");
-        scanf("%c", &selection);
+        scanf(" %c", &selection);
 
         if (selection == 'A'){
             printf("Enter the filename: ");
             scanf("%s", fileName);
             fopen(fileName, "r");
-            perror("Error");
+            perror();
         }
         else if (selection == 'B'){
             printf("B\n");
