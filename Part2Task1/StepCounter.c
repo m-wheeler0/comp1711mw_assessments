@@ -2,25 +2,27 @@
 
 int count = 0;
 char strFile[32];
-char fileName[];
+char fileName[32];
+char selection;
+FILE *dataFile;
 
 int main() {
-    printf("What option would you like to choose?\n"
-    "A. Specify the filename to be imported\n"
-    "B. Display the total number of records on the file\n"
-    "C. Find the date and time with the fewest steps\n"
-    "D. Find the data and time with the most steps\n"
-    "E. Find the mean step count of all recorded data in the file\n"
-    "F. Find the longest continuous streak of having over 500 steps per record\n"
-    "Q. Quit\n");
-
-    char selection;
-    scanf("%c", &selection);
 
     while (selection != 'Q'){
+        printf("What option would you like to choose?\n"
+        "A. Specify the filename to be imported\n"
+        "B. Display the total number of records on the file\n"
+        "C. Find the date and time with the fewest steps\n"
+        "D. Find the data and time with the most steps\n"
+        "E. Find the mean step count of all recorded data in the file\n"
+        "F. Find the longest continuous streak of having over 500 steps per record\n"
+        "Q. Quit\n");
+        scanf("%c", &selection);
+
         if (selection == 'A'){
             printf("Enter the filename: ");
             scanf("%s", &fileName);
+            perror("Error")
         }
         else if (selection == 'B'){
             printf("B\n");
@@ -37,11 +39,10 @@ int main() {
         else if (selection == 'F'){
             printf("F\n");
         }
+        else if (selection == 'Q'){
+            exit(0);
         }
-    if (selection == 'Q'){
-        exit(0);
-    }
-    else{
-        printf("Invalid answer\n");
-    }
+        else{
+            printf("Invalid answer\n");
+        }
 }
