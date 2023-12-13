@@ -21,8 +21,9 @@ int main() {
 
         if (selection == 'A'){
             printf("Enter the filename: ");
-            scanf("%s", &fileName);
-            perror("Error")
+            scanf("%s", fileName);
+            fopen(fileName, "r");
+            perror("Error");
         }
         else if (selection == 'B'){
             printf("B\n");
@@ -45,4 +46,7 @@ int main() {
         else{
             printf("Invalid answer\n");
         }
+
+    return 0;
+    }
 }
