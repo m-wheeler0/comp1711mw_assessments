@@ -34,7 +34,13 @@ int main() {
             printf("The number of records in this data file is: %d\n\n", recordCount);
         }
         else if (selection == 'C'){
-            printf("Fewest steps: \n\n")
+            int stepCount;
+            while (fgets(strFile, 32, dataFile)){
+                if (fitnessData.step < stepCount){
+                    stepCount = fitnessData.step;
+                }
+            }
+            printf("Fewest steps: %d\n\n", stepCount);
             perror("");
         }
         else if (selection == 'D'){
