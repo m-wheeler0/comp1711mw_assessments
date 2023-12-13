@@ -1,10 +1,10 @@
 #include "FitnessDataStruct.h"
 
-int count = 0;
 char strFile[32];
 char fileName[32];
 char selection;
 FILE *dataFile;
+FITNESS_DATA fitnessData;
 
 int main() {
 
@@ -23,22 +23,28 @@ int main() {
             printf("Enter the filename: ");
             scanf("%s", fileName);
             fopen(fileName, "r");
-            perror();
+            perror("");
+            printf("\n");
+            
         }
         else if (selection == 'B'){
-            printf("B\n");
+            int recordCount;
+            while (fgets(strFile, 32, dataFile)){
+                recordCount++;
+            }
+            printf("%d", recordCount);
         }
         else if (selection == 'C'){
-            printf("C\n");
+            perror("");
         }
         else if (selection == 'D'){
-            printf("D\n");
+            perror("");
         }
         else if (selection == 'E'){
-            printf("E\n");
+            perror("");
         }
         else if (selection == 'F'){
-            printf("F\n");
+            perror("");
         }
         else if (selection == 'Q'){
             exit(0);
