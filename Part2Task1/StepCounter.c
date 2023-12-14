@@ -23,7 +23,7 @@ int main() {
             scanf("%s", fileName);
             dataFile = fopen(fileName, "r");
             if (dataFile == NULL){
-                perror("");
+                return 1;
             }
             else{
                 fgets(strFile, 32, dataFile);
@@ -36,7 +36,7 @@ int main() {
             while (fgets(strFile, 32, dataFile)){
                 recordCount++;
             }
-            printf("Total records: %d\n\n", recordCount);
+            printf("Total records: %d\n", recordCount);
 
             recordCount = 0;
         }
@@ -51,7 +51,7 @@ int main() {
                 }
 
             }
-            printf("Fewest steps: %d\n\n", lowestStepCount);
+            printf("Fewest steps: %d\n", lowestStepCount);
         }
         else if (selection == 'D'){
             int largestStepCount = 0;
@@ -65,7 +65,7 @@ int main() {
                     sprintf(largestStepTime ,"Largest steps: %s %s\n", fitnessData.date, fitnessData.time);
                 }
             }
-            printf("%s\n", largestStepTime);
+            printf("%s", largestStepTime);
         }
         else if (selection == 'E'){
             rewind(dataFile);
@@ -76,7 +76,7 @@ int main() {
                 recordCount++;
             }
 
-            printf("%d\n\n", (stepCount/recordCount));
+            printf("Mean step count: %d\n", (stepCount/recordCount));
         }
         else if (selection == 'F'){
             char streakStart[50];
@@ -101,7 +101,7 @@ int main() {
                     if (streakLength > bestStreak){
                         bestStreak = streakLength;
                         strcpy(longestStreakStart, streakStart);
-                        sprintf(streakEnd, "Longest period end %s %s\n", fitnessData.date, fitnessData.time);
+                        sprintf(streakEnd, "Longest period end: %s %s\n", fitnessData.date, fitnessData.time);
                     } 
                     else{
                     }
@@ -110,7 +110,6 @@ int main() {
             }
             printf("%s", longestStreakStart);
             printf("%s", streakEnd);
-            printf("\n");
         }
         else if (selection == 'Q'){
             fclose(dataFile);
