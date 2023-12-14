@@ -8,14 +8,14 @@ FITNESS_DATA fitnessData;
 int main() {
 
     while (selection != 'Q'){
-        printf("What option would you like to choose?\n"
-        "A. Specify the filename to be imported\n"
-        "B. Display the total number of records on the file\n"
-        "C. Find the date and time with the fewest steps\n"
-        "D. Find the data and time with the most steps\n"
-        "E. Find the mean step count of all recorded data in the file\n"
-        "F. Find the longest continuous streak of having over 500 steps per record\n"
-        "Q. Quit\n");
+        printf("Menu Options:\n"
+        "A: Specify the filename to be imported\n"
+        "B: Display the total number of records on the file\n"
+        "C: Find the date and time with the fewest steps\n"
+        "D: Find the data and time with the most steps\n"
+        "E: Find the mean step count of all recorded data in the file\n"
+        "F: Find the longest continuous streak of having over 500 steps per record\n"
+        "Q: Quit\n");
         scanf(" %c", &selection);
 
         if (selection == 'A'){
@@ -42,16 +42,18 @@ int main() {
         }
         else if (selection == 'C'){
             int lowestStepCount = 20000;
+            char lowestStepTime[32];
             rewind(dataFile);
             while (fgets(strFile, 32, dataFile)){
                 tokeniseRecord(strFile, ",", fitnessData.date, fitnessData.time, fitnessData.steps);
                 stepCount = atoi(fitnessData.steps);
                 if (stepCount < lowestStepCount){
                     lowestStepCount = stepCount;
+                    sprintf(lowestStepTime, "Fewest steps: %s %s\n", fitnessData.date, fitnessData.time);
                 }
 
             }
-            printf("Fewest steps: %d\n", lowestStepCount);
+            printf("%s", lowestStepTime);
         }
         else if (selection == 'D'){
             int largestStepCount = 0;
