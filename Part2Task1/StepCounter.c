@@ -21,13 +21,13 @@ int main() {
         if (selection == 'A'){
             printf("Input filename: ");
             scanf("%s", fileName);
-            if (strcmp(fileName, "") == 0){
-                printf("Input filename.");
-                continue;
-            }
             dataFile = fopen(fileName, "r");
-            perror("");
-            fgets(strFile, 32, dataFile);
+            if (dataFile == NULL){
+                perror("");
+            }
+            else{
+                fgets(strFile, 32, dataFile);
+            }
             printf("\n");
             
         }
@@ -79,9 +79,9 @@ int main() {
             printf("%d\n\n", (stepCount/recordCount));
         }
         else if (selection == 'F'){
-            char streakStart[32];
-            char longestStreakStart[32];
-            char streakEnd[32];
+            char streakStart[50];
+            char longestStreakStart[50];
+            char streakEnd[50];
             int streakLength = 0;
             int bestStreak = 0;
             int currentStreak = 0;
@@ -101,13 +101,11 @@ int main() {
                     if (streakLength > bestStreak){
                         bestStreak = streakLength;
                         strcpy(longestStreakStart, streakStart);
-                        sprintf(streakEnd, "Longest period end: %s %s\n", fitnessData.date, fitnessData.time);
+                        sprintf(streakEnd, "Longest period end %s %s\n", fitnessData.date, fitnessData.time);
                     } 
                     else{
-                        continue;
                     }
                     streakLength = 0;
-                    
                 }
             }
             printf("%s", longestStreakStart);
