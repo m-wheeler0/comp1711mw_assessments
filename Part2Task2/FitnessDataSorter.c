@@ -31,7 +31,9 @@ int main() {
     char fileName[20];
     char outputName[24];
     char record[32];
-    int highestCount = 9999, currentHighest = 0, stepCount;
+    char highestTime[6];
+    char highestDate[10];
+    int highestCount = 9999, currentHighest, stepCount, recordCount;
     FILE *inputFile, *outputFile;
 
     while (fopen(fileName, "r") == NULL){
@@ -44,16 +46,36 @@ int main() {
     outputFile = fopen(outputName ,"a");
 
     while(fgets(record, 32, inputFile)){
-        tokeniseRecord(record, ',', row.date, row.time, &row.steps);
-        fprintf(outputFile, "Hello world\n");
-        stepCount = row.steps;
-        if (stepCount > currentHighest && stepCount < highestCount){
-            currentHighest = stepCount;
-        }
+        recordCount++;
     }
 
-    printf("Highest count: %d", currentHighest);
+    rewind(inputFile);
+
+    for(int i = 0; i < recordCount; i++){
+        currentHighest = 0;
+        while(fgets(record, 32, inputFile)){
+            tokeniseRecord(record, ',', row.date, row.time, &row.steps);
+            if (row.steps > currentHighest && row.steps < highestCount){
+                printf("%d\n",row.steps);
+                printf("%d\n",highestCount);
+                currentHighest = row.steps;
+                strcpy(highestTime, row.time);
+                strcpy(highestDate, row.date);
+            }
+            else
+            {
+                currentHighest = currentHighest;
+            }
+        }
+        highestCount = currentHighest; 
+        fprintf(outputFile, "%s\t%s\t%d\n", highestDate, highestTime, currentHighest);
+        printf("%d\n", highestCount);
+    }
+
+    recordCount = 0;
 
     fclose(inputFile);
     fclose(outputFile);
+
+    exit(0);
 }
