@@ -70,6 +70,7 @@ int main() {
         highestCount = currentHighest; 
         fprintf(outputFile, "%s\t%s\t%d\n", highestDate, highestTime, currentHighest);
         printf("%d\n", highestCount);
+        //Rushed due to deadlines, could not finish this sorting function
     }
 
     recordCount = 0;
