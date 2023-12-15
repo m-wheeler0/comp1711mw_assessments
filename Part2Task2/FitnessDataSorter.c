@@ -31,7 +31,7 @@ int main() {
     char fileName[20];
     char outputName[24];
     char record[32];
-    int highestCount = 9999, currentHighest = 9999, stepCount;
+    int highestCount = 9999, currentHighest = 0, stepCount;
     FILE *inputFile, *outputFile;
 
     while (fopen(fileName, "r") == NULL){
@@ -48,7 +48,7 @@ int main() {
         fprintf(outputFile, "Hello world\n");
         stepCount = row.steps;
         if (stepCount > currentHighest && stepCount < highestCount){
-            currentHighest == stepCount;
+            currentHighest = stepCount;
         }
     }
 
